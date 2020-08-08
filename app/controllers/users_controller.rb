@@ -25,7 +25,8 @@ class UsersController < ApplicationController
     end 
 
     post '/users' do
-        
+        if params[:name] != "" && params [:email] != "" && params[:password] != ""
+            @user = User.create(params)
 
     end
 
