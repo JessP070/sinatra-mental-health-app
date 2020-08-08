@@ -15,7 +15,6 @@ class ApplicationController < Sinatra::Base
     else
       erb :welcome
     end
-    erb :welcome
   end
 
   helpers do
