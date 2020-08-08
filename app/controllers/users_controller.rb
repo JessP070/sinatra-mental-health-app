@@ -1,9 +1,16 @@
-class UsersController < ApplicationController::Sinatra
+class UsersController < ApplicationController
+   
     get '/login' do
+        erb :login
+    end
 
-    erb :login
+    post '/login' do
+    end
+    
+    
+    get 'signup' do
+
     end 
-    get 'signup'
 
 
 end
