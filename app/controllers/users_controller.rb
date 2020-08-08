@@ -18,9 +18,17 @@ class UsersController < ApplicationController
     end
     
     
-    get 'signup' do
+    get '/signup' do
+        
+        erb :signup
 
     end 
+
+    post '/users' do
+        
+
+    end
+
 
     get '/users/:id' do
         "user page"
