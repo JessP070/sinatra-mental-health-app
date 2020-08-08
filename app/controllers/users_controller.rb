@@ -8,7 +8,7 @@ class UsersController < ApplicationController
         @user =User.find_by(email: params[:email])
 
         if @user.authenticate(params[:password])
-            session[:user_id] = @user.id
+            # session[:user_id] = @user.id
             puts session
            
             redirect "users/#{@user.id}"
@@ -29,19 +29,26 @@ class UsersController < ApplicationController
         if params[:name] != "" && params[:email] != "" && params[:password] != ""
        
             @user = User.create(params)
-            
+            session[:user_id] = @user.id
+
             
             redirect "/users/#{@user.id}"
 
-            else
-
-            
+        else
+            redirect '/signup'
+      
         end   
     end
 
 
     get '/users/:id' do
-               erb :'users/show'
+        @user = User.find_by(id: params[:id])
+            erb :'users/show'
+    end
+
+    get '/logout' do
+        session.clear
+        redirect '/'
     end
 
 
