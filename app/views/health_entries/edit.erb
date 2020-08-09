@@ -1,1 +1,8 @@
-edit form goes here
+edit page for journal entry
+<form class="" action="/health_entries/<%= @health_entry.id %>" method="post">
+<input type="hidden" name="_method" value="patch">
+<label for="content">Content:</label>
+<textarea name="content" style="width:auto; height:auto;"><%= @health_entry.content %></textarea>
+    <input type="submit" name="" value="Edit Entry">
+</form>
+
