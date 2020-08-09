@@ -8,6 +8,7 @@ end
 use Rack::MethodOverride 
 
 use UsersController
+
 use HealthEntriesController
 
 run ApplicationController

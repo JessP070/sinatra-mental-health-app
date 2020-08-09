@@ -12,19 +12,15 @@ class HealthEntriesController < ApplicationController
         if params[:content] != ""
             
             @health_entry = HealthEntry.create(content: params[:content], user_id: current_user.id)
-
             redirect "/health_entries/#{@health_entry.id}"
 
         else 
             redirect '/health_entries/new'
         end
+    end
 
-        get '/health_entries/:id' do
-            @health_entry = HealthEntry.find(params[:id])
-
-            erb :'/health_entries/show'
-
-        end
-
+    get '/health_entries/:id' do
+        @health_entry = HealthEntry.find(params[:id])
+        erb :'/health_entries/show'
     end
 end
