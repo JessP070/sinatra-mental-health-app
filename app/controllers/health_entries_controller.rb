@@ -20,12 +20,28 @@ class HealthEntriesController < ApplicationController
     end
 
     get '/health_entries/:id' do
-        @health_entry = HealthEntry.find(params[:id])
+        set_health_entry   
         erb :'/health_entries/show'
     end
 
 
     get '/health_entries/:id/edit' do
-       erb :'/health_entries/edit'
+        set_health_entry
+        
+        erb :'/health_entries/edit'
+    end
+
+    patch '/health_entries/:id' do
+        set_health_entry
+        @health_entry.update(content: params[:content])
+
+        redirect "/health_entries/#{@health_entry.id}"
+    end
+        
+
+    private 
+
+    def set_health_entry
+        @health_entry = HealthEntry.find(params[:id])
     end
 end
