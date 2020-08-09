@@ -23,4 +23,9 @@ class HealthEntriesController < ApplicationController
         @health_entry = HealthEntry.find(params[:id])
         erb :'/health_entries/show'
     end
+
+
+    get '/health_entries/:id/edit' do
+       erb :'/health_entries/edit'
+    end
 end
