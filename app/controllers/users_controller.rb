@@ -5,15 +5,18 @@ class UsersController < ApplicationController
     end
 
     post '/login' do
-        @user =User.find_by(email: params[:email])
+        @user = User.find_by(email: params[:email])
 
         if @user.authenticate(params[:password])
-            # session[:user_id] = @user.id
+
+            session[:user_id] = @user.id
+            
             puts session
-           
+        
             redirect "users/#{@user.id}"
             
         else 
+            redirect '/login '
 
         end
     end
@@ -31,7 +34,6 @@ class UsersController < ApplicationController
             @user = User.create(params)
             session[:user_id] = @user.id
 
-            
             redirect "/users/#{@user.id}"
 
         else
@@ -41,9 +43,12 @@ class UsersController < ApplicationController
     end
 
 
+    #user SHOW ROUTE
+
     get '/users/:id' do
         @user = User.find_by(id: params[:id])
-            erb :'users/show'
+
+            erb :'/users/show'
     end
 
     get '/logout' do
