@@ -27,15 +27,32 @@ class HealthEntriesController < ApplicationController
 
     get '/health_entries/:id/edit' do
         set_health_entry
-        
-        erb :'/health_entries/edit'
+        if logged_in?
+         if @health_entry.user == current_user
+            erb :'/health_entries/edit'
+        else
+            redirect "users/#{current_user.id}"
+        end
+        else
+            redirect '/'
+        end
+
     end
 
     patch '/health_entries/:id' do
         set_health_entry
-        @health_entry.update(content: params[:content])
-
-        redirect "/health_entries/#{@health_entry.id}"
+        if logged_in?
+            if @health_entry.user == current_user
+                
+                @health_entry.update(content: params[:content])
+                
+                redirect "/health_entries/#{@health_entry.id}"
+            else
+                redirect "users/#{current_user.id}"
+            end
+        else
+            redirect '/'
+        end  
     end
         
 
