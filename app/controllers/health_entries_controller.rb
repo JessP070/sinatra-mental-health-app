@@ -34,7 +34,7 @@ class HealthEntriesController < ApplicationController
     get '/health_entries/:id/edit' do
         set_health_entry
         if logged_in?
-         if @health_entry.user == current_user
+         if authorized_to_edit?(@health_entry)
             erb :'/health_entries/edit'
         else
             redirect "users/#{current_user.id}"
@@ -59,6 +59,16 @@ class HealthEntriesController < ApplicationController
         else
             redirect '/'
         end  
+    end
+
+    delete '/health_entries/:id' do
+        set_health_entry
+        if  authorized_to_edit?(@health_entry)
+            @health_entry.destroy
+            redirect '/health_entries'
+        else
+            redirect '/health_entries'
+        end
     end
         
     private 

@@ -4,9 +4,7 @@ SHOW PAGE FOR A HEALTH ENTRY
 
 <% if authorized_to_edit?(@health_entry) %>
 <a href="/health_entries/<%= @health_entry.id %>/edit">Edit</a>
-
-
-Delete Link
+<a href="/health_entries/<%= @health_entry.id %>">Delete</a>
 <% end %>
 
 
