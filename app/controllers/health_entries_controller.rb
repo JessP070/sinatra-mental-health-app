@@ -55,10 +55,10 @@ class HealthEntriesController < ApplicationController
         end  
     end
         
-
     private 
 
     def set_health_entry
         @health_entry = HealthEntry.find(params[:id])
     end
+    
 end
