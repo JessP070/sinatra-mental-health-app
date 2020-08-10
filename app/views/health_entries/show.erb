@@ -2,7 +2,7 @@ SHOW PAGE FOR A HEALTH ENTRY
 
 <p><%= @health_entry.content %></p>
 
-Edit Link
+<% if current_user == @health_entry.user  %>
 <a href="/health_entries/<%= @health_entry.id %>/edit">Edit</a>
 
 Delete Link
