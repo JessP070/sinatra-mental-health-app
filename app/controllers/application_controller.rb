@@ -31,6 +31,7 @@ class ApplicationController < Sinatra::Base
 
     def authorized_to_edit?(health_entry)
       health_entry.user == current_user
+    end
 
   end
 
