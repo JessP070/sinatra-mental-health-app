@@ -1,5 +1,11 @@
 class HealthEntriesController < ApplicationController
-    
+
+    get '/health_entries' do
+        @health_entries = HealthEntry.all
+        erb :'health_entries/index'
+
+    end
+       
     get '/health_entries/new' do
         erb :'/health_entries/new'
     end
@@ -60,5 +66,5 @@ class HealthEntriesController < ApplicationController
     def set_health_entry
         @health_entry = HealthEntry.find(params[:id])
     end
-    
+
 end
