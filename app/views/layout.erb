@@ -16,9 +16,11 @@
   <body>
 
     <div class="nav">
+    <% if logged_in? %>
     <a href="/logout">Logout</a>
     <a href="/health_entries">All Health Entries</a>
     <a href="/health_entries/new">New Entry</a>
+    <% end %>
 
 
     </div>
