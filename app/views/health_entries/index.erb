@@ -1,1 +1,8 @@
-index page for health entries
+ALL JOURNAL ENTRIES
+<% @health_entries.each do |health_entry| %>
+<h4><a href="/health_entries/<%= health_entry.id %>"><%= health_entry.created_at %></a></h4>
+<p><%= health_entry.content %></p>
+<p>By <%= health_entry.user.name %></p>
+<br><br>
+
+<% end %>
