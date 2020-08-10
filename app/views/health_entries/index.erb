@@ -1,8 +1,10 @@
 ALL JOURNAL ENTRIES
+<br></br>
 <% @health_entries.each do |health_entry| %>
-<h4><a href="/health_entries/<%= health_entry.id %>"><%= health_entry.created_at %></a></h4>
+
 <p><%= health_entry.content %></p>
 <p>By <%= health_entry.user.name %></p>
+<h4><a href="/health_entries/<%= health_entry.id %>"><%= health_entry.created_at %></a></h4>
 <br><br>
 
 <% end %>
