@@ -4,7 +4,13 @@ SHOW PAGE FOR A HEALTH ENTRY
 
 <% if authorized_to_edit?(@health_entry) %>
 <a href="/health_entries/<%= @health_entry.id %>/edit">Edit</a>
-<a href="/health_entries/<%= @health_entry.id %>">Delete</a>
+<br><br>
+<form class=" action="/health_entries/<%= @health_entry.id %>" method="post">
+<input type="hidden" name="_method" value="DELETE">
+<input type="submit" name="" value="Delete Entry">
+</form>
+
+
 <% end %>
 
 
