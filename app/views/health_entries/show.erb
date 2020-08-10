@@ -2,11 +2,11 @@ SHOW PAGE FOR A HEALTH ENTRY
 
 <p><%= @health_entry.content %></p>
 
-<% if current_user == @health_entry.user  %>
+<% if authorized_to_edit?(@health_entry) %>
 <a href="/health_entries/<%= @health_entry.id %>/edit">Edit</a>
 
-Delete Link
-<a href="/health_entries/<%= @health_entry.id %>/delete">Delete</a>
 
+Delete Link
+<% end %>
 
 
